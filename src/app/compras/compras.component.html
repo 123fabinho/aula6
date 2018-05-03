@@ -1,0 +1,34 @@
+<div class="container">
+  <h1> LISTA DE COMPRAS </h1>
+  <ul>
+    <li *ngFor = "let compra of lista" (click)="selected(compra)" [class.selected]="compra === selectedcompra">
+      {{compra.produto}} {{compra.valor | currency: 'BRL': true}}
+    </li>
+  </ul>
+</div>
+ <div class=container>
+   <h2>nova compra</h2> 
+
+    <label> id </label>
+    <input type="text"[(ngModel)]="compra.id" name="produto"/>
+
+    <label> nome do produto </label>
+    <input type="text"[(ngModel)]="compra.produto" name="produto"/>
+
+    <label> quantidade </label>
+    <input type="text"[(ngModel)]="compra.quantidade" name="produto"/>
+
+    <label> valor </label>
+    <input type="text"[(ngModel)]="compra.valor" name="produto"/>
+
+  <button (click)="add()">adicionar</button>
+  </div>
+
+ <div class=container *ngIf="selectedcompra">
+   <h3>Detalhes</h3>
+   <p> ID: {{selectedcompra.id}} </p>
+     <p>produto: {{selectedcompra.produto}} </p>
+       <p> quantidade: {{selectedcompra.quantidade}} </p>
+         <p> valor: {{selectedcompra.valor}} </p>
+   
+   </div>
